@@ -88,15 +88,15 @@ if(session.getAttribute("username") != null){
 	<h1><i class="fas fa-dumbbell"></i> Edit Workout</h1>
 	<p> To edit a workout, please fill out the following fields:</p>
   
-  	<form id="edit-workout" action="EditWorkout" method="post" enctype="multipart/form-data">
+  	<form id="edit-workout" action="EditWorkout?id=<%= id %>" method="post" enctype="multipart/form-data">
   		<section class="first">
           	<fieldset class="first_fieldset">
               	<legend>Workout</legend>
               	<label> Workout Name: </label><br>
-              	<input type="text" name = "name" size="25" value=<%=rs.getString("name") %>><br>
+              	<input type="text" name = "name" size="25" value="<%= rs.getString("name") %>"><br>
               	<label> Skill Level: </label>
               	<label> Type: </label>
-              	<select name="workout_type">
+              	<select name="skill_level">
               		<% 
               		if(rs.getString("skill_level").equals("Beginner")){
               			out.println("<option value=\"Beginner\" selected>Beginner</option>");
@@ -116,7 +116,7 @@ if(session.getAttribute("username") != null){
                 </select><br>
               	<br>
               	<label> Type: </label>
-              	<select name="workout_type">
+              	<select name="type">
               		<% 
               		if(rs.getString("type").equals("Weight Training")){
               			out.println("<option value=\"Weight Training\" selected>Weight Training</option>");
@@ -134,16 +134,24 @@ if(session.getAttribute("username") != null){
                 <%@ page import="java.sql.*" %>
 				<%@ page import="java.io.*" %>
                 <% 
-				/*String dbURL =  "jdbc:mysql://localhost/MyFitnessPal";
-			    Connection connection = DriverManager.getConnection(dbURL, "root", "BACHlover1234"); */
 			    connection = DriverManager.getConnection(dbURL, "root", "BACHlover1234");
 			    query = "SELECT * FROM equipment";
 			    PreparedStatement pstmt2 = connection.prepareStatement(query);   
 			    
-			    ResultSet rs2 = pstmt2.executeQuery() ;
-			    //connection.close();
+			    ResultSet rs2 = pstmt2.executeQuery();
+			    String equipment = "";
+			    boolean match = false;
 			    while(rs2.next()){
-				    out.println("<input type=\"checkbox\" name=\"equipment\" value=\"" + rs2.getString("name") + "\"> " + rs2.getString("name") + "<br>");
+			    	match = false;
+			    	equipment = rs.getString("equipment");
+			    	String[] equipment_list = equipment.split(",");
+			    	
+			    	for(String item : equipment_list){ if(item.equals(rs2.getString("name"))) match = true;}
+			    	
+			    	if(match)
+		    			out.println("<input type=\"checkbox\" name=\"equipment\" value=\"" + rs2.getString("name") + "\" checked> " + rs2.getString("name") + "<br>");
+			    	else
+		    			out.println("<input type=\"checkbox\" name=\"equipment\" value=\"" + rs2.getString("name") + "\"> " + rs2.getString("name") + "<br>");
 			    }
 				%>
   				
@@ -159,16 +167,25 @@ if(session.getAttribute("username") != null){
 			    while(rs2.next()){
 			    	String muscle_group_id = rs2.getString("id");
 			    	out.println("<br><label> " + rs2.getString("name")+ " </label><br>");
-			    	//onnection = DriverManager.getConnection(dbURL, "root", "BACHlover1234");
+			    	connection = DriverManager.getConnection(dbURL, "root", "BACHlover1234");
 				    query = "SELECT name FROM muscle WHERE muscle_group_id = ?";
 				    PreparedStatement pstmt3 = connection.prepareStatement(query); 
 				    pstmt3.setString(1, muscle_group_id);
 				    
 				    ResultSet rs3 = pstmt3.executeQuery();
-				    
+				    String muscles = "";
 				    
 				    while(rs3.next()){
-				    	out.println("<input type=\"checkbox\" name=\"muscles\" value=\"" + rs3.getString("name") + "\"> " + rs3.getString("name")+ "<br>");
+				    	match = false;
+				    	muscles = rs.getString("muscles");
+				    	String[] muscle_list = muscles.split(",");
+				    	
+				    	for(String item : muscle_list){ if(item.equals(rs3.getString("name"))) match = true;}
+				    	
+				    	if(match)
+			    			out.println("<input type=\"checkbox\" name=\"muscles\" value=\"" + rs3.getString("name") + "\" checked> " + rs3.getString("name") + "<br>");
+				    	else
+			    			out.println("<input type=\"checkbox\" name=\"muscles\" value=\"" + rs3.getString("name") + "\"> " + rs3.getString("name") + "<br>");
 				    }
 			    }
 

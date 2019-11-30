@@ -59,24 +59,17 @@ public class AddMuscleGroupServlet extends HttpServlet {
 	    
 	    connection.close();
 	  }
-	  catch(SQLException e) {
-		  e.printStackTrace();
+	  catch(Exception e) {
 		  out.println("<script type=\"text/javascript\">");
-		  out.println("alert('Please enter all required fields');");
+		  out.println("alert('Something went wrong...');");
 		  out.println("location='add-muscle-group.jsp';");
 		  out.println("</script>");
 		  return;
 	  }
-	  catch(Exception e) {
-		  out.println("<script type=\"text/javascript\">");
-		  out.println("alert('Something went wrong...');");
-		  out.println("location='add-muscle-groupt.jsp';");
-		  out.println("</script>");
-	  }
 	  
 	  out.println("<script type=\"text/javascript\">");
 	  out.println("alert('Muscle Group Uploaded Successfully');");
-	  out.println("location='index.jsp';");
+	  out.println("location='browse-all-muscle-groups.jsp';");
 	  out.println("</script>");
 	  
 	  

@@ -61,24 +61,17 @@ public class AddMuscleServlet extends HttpServlet {
 	    
 	    connection.close();
 	  }
-	  catch(SQLException e) {
-		  e.printStackTrace();
-		  out.println("<script type=\"text/javascript\">");
-		  out.println("alert('Please enter all required fields');");
-		  out.println("location='add-muscle.jsp';");
-		  out.println("</script>");
-		  return;
-	  }
 	  catch(Exception e) {
 		  out.println("<script type=\"text/javascript\">");
 		  out.println("alert('Something went wrong...');");
 		  out.println("location='add-muscle.jsp';");
 		  out.println("</script>");
+		  return;
 	  }
 	  
 	  out.println("<script type=\"text/javascript\">");
 	  out.println("alert('Muscle Uploaded Successfully');");
-	  out.println("location='index.jsp';");
+	  out.println("location='browse-all-muscles.jsp';");
 	  out.println("</script>");
 	  
 	  

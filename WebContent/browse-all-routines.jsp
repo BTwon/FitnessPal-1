@@ -82,38 +82,42 @@ if(session.getAttribute("username") != null){
   <h1><i class="fas fa-dumbbell"></i> Browse All Workouts</h1>
   
 <%
+if(rs.next() == false){
+	out.println("<p> You do not have any routines </p>");
+} else {
 
-while(rs.next()){	
-	out.println("<div class=\"row\">  "  + 
-			 "       <div class=\"column2\">  "  + 
-			 "         <a href=\"workout-info.jsp?id=" + rs.getString("id") + "\">" +
-			 "          <div class=\"container2\">  "  + 
-			 "			 <img src=\"./ImageServlet?id=" + rs.getString("id") + "&table=workout\" height=\"400\" align=\"middle\" style=\"display:block; margin:auto; max-width:100%; height:auto; max-height:400px;\">  "  + 
-			 "             <div class=\"middle\">  "  + 
-			 "               <div class=\"text\">" + rs.getString("name") + "</div>  "  + 
-			 "             </div>  "  + 
-			 "          </div>  "  + 
-			 "         </a> " +
-			 "       </div>  "  + 
-			 "       <div class=\"column2\">  "  + 
-			 "         <div class=\"description\">  "  + 
-			 "           <p> " + rs.getString("name") + " </p>  "  + 
-			 "           <hr>  "  + 
-			 "           <p>Instructions: " + rs.getString("name") + "</p>  "  + 
-			 "           <p>Skill Level: " + rs.getString("skill_level") + " </p>  "  + 
-			 "           <p>Type: " + rs.getString("type") + "</p>  "  + 
-			 "           <p>Equipment: " + rs.getString("equipment") + "</p>  "  + 
-			 "           <p>Muscles Worked: " + rs.getString("muscles") + "</p>  "  + 
-			 "           <a href=\"workout-info.jsp?id=" + rs.getString("id") + "\">Click here to see workout.</a>"  + 
-			 "             "  + 
-			 "             <br>  "  + 
-			 "             <br>  "  + 
-			 "             <br>  "  + 
-			 "         </div>  "  + 
-			 "       </div>  "  + 
-			 "     </div>  "  + 
-			 "   <hr>  "  + 
-			 "    "  );
+do{	
+		out.println("<div class=\"row\">  "  + 
+				 "       <div class=\"column2\">  "  + 
+				 "         <a href=\"workout-info.jsp?id=" + rs.getString("id") + "\">" +
+				 "          <div class=\"container2\">  "  + 
+				 "			 <img src=\"./ImageServlet?id=" + rs.getString("id") + "&table=workout\" height=\"400\" align=\"middle\" style=\"display:block; margin:auto; max-width:100%; height:auto; max-height:400px;\">  "  + 
+				 "             <div class=\"middle\">  "  + 
+				 "               <div class=\"text\">" + rs.getString("name") + "</div>  "  + 
+				 "             </div>  "  + 
+				 "          </div>  "  + 
+				 "         </a> " +
+				 "       </div>  "  + 
+				 "       <div class=\"column2\">  "  + 
+				 "         <div class=\"description\">  "  + 
+				 "           <p> " + rs.getString("name") + " </p>  "  + 
+				 "           <hr>  "  + 
+				 "           <p>Instructions: " + rs.getString("name") + "</p>  "  + 
+				 "           <p>Skill Level: " + rs.getString("skill_level") + " </p>  "  + 
+				 "           <p>Type: " + rs.getString("type") + "</p>  "  + 
+				 "           <p>Equipment: " + rs.getString("equipment") + "</p>  "  + 
+				 "           <p>Muscles Worked: " + rs.getString("muscles") + "</p>  "  + 
+				 "           <a href=\"workout-info.jsp?id=" + rs.getString("id") + "\">Click here to see workout.</a>"  + 
+				 "             "  + 
+				 "             <br>  "  + 
+				 "             <br>  "  + 
+				 "             <br>  "  + 
+				 "         </div>  "  + 
+				 "       </div>  "  + 
+				 "     </div>  "  + 
+				 "   <hr>  "  + 
+				 "    "  );
+	}while(rs.next());
 }
 %>
 </div>	

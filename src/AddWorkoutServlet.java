@@ -98,7 +98,7 @@ public class AddWorkoutServlet extends HttpServlet {
 	  
 	  out.println("<script type=\"text/javascript\">");
 	  out.println("alert('Workout Uploaded Successfully');");
-	  out.println("location='index.jsp';");
+	  out.println("location='browse-all-workouts.jsp';");
 	  out.println("</script>");
 	  
 	  

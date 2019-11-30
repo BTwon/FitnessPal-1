@@ -62,14 +62,6 @@ public class AddEquipmentServlet extends HttpServlet {
 	    
 	    connection.close();
 	  }
-	  catch(SQLException e) {
-		  e.printStackTrace();
-		  out.println("<script type=\"text/javascript\">");
-		  out.println("alert('Please enter all required fields');");
-		  out.println("location='add-equipment.jsp';");
-		  out.println("</script>");
-		  return;
-	  }
 	  catch(Exception e) {
 		  out.println("<script type=\"text/javascript\">");
 		  out.println("alert('Something went wrong...');");
@@ -79,7 +71,7 @@ public class AddEquipmentServlet extends HttpServlet {
 	  
 	  out.println("<script type=\"text/javascript\">");
 	  out.println("alert('Equipment Uploaded Successfully');");
-	  out.println("location='index.jsp';");
+	  out.println("location='browse-all-equipment.jsp';");
 	  out.println("</script>");
 	  
 	  

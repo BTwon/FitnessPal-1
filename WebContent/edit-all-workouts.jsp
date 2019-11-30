@@ -107,7 +107,7 @@ else{
 				 "         <div class=\"description\">  "  + 
 				 "           <p> " + rs.getString("name") + " </p>  "  + 
 				 "           <hr>  "  + 
-				 "           <p>Instructions: " + rs.getString("name") + "</p>  "  + 
+				 "           <p>Instructions: " + rs.getString("instructions") + "</p>  "  + 
 				 "           <p>Skill Level: " + rs.getString("skill_level") + " </p>  "  + 
 				 "           <p>Type: " + rs.getString("type") + "</p>  "  + 
 				 "           <p>Equipment: " + rs.getString("equipment") + "</p>  "  + 

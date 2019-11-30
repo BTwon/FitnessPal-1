@@ -30,6 +30,10 @@ public class EditMuscle extends HttpServlet {
 	    
 	    HttpSession session = request.getSession();
 	    String user = session.getAttribute("username").toString();
+	    
+	    if(user == null){
+	    	response.sendRedirect("login.jsp");
+	    }
 
 	    InputStream inputStream= null;
 	    
@@ -77,7 +81,7 @@ public class EditMuscle extends HttpServlet {
 	  
 	  out.println("<script type=\"text/javascript\">");
 	  out.println("alert('Muscle Group Updated Successfully');");
-	  out.println("location='index.jsp';");
+	  out.println("location='edit-all-muscles.jsp';");
 	  out.println("</script>");
 	  
 	  

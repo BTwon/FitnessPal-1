@@ -78,13 +78,13 @@ public class EditEquipment extends HttpServlet {
 	  catch(Exception e) {
 		  out.println("<script type=\"text/javascript\">");
 		  out.println("alert('Something went wrong...');");
-		  out.println("location='edit-equipment.jsp?id=" + id +  "';");
+		  out.println("location='edit-equipment.jsp?id=" + Integer.toString(id) +  "';");
 		  out.println("</script>");
 	  }
 	  
 	  out.println("<script type=\"text/javascript\">");
 	  out.println("alert('Equipment Updated Successfully');");
-	  out.println("location='index.jsp';");
+	  out.println("location='edit-all-equipment.jsp';");
 	  out.println("</script>");
 	  
 	  
