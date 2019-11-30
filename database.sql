@@ -62,12 +62,12 @@ CREATE TABLE workout (
 	type ENUM ('Weight Training', 'Cardio') NOT NULL DEFAULT 'Weight Training',
 	equipment VARCHAR(255),
 	muscles VARCHAR(255), 
-    image_content LONGBLOB,
-    video VARCHAR(255),
-    instructions VARCHAR(5000),
-    user VARCHAR(255),
+	image_content LONGBLOB,
+	video VARCHAR(255),
+	instructions VARCHAR(5000),
+	user VARCHAR(255),
 	PRIMARY KEY(id),
-    CONSTRAINT AK_UnqueName UNIQUE(name)
+	CONSTRAINT AK_UnqueName UNIQUE(name)
 );
 
 create trigger embedthevideo
