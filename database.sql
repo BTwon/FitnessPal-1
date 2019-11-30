@@ -4,54 +4,54 @@ USE MyFitnessPal;
 
 CREATE TABLE user(
 	id INT NOT NULL AUTO_INCREMENT,
-    full_name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    username VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL UNIQUE,
-    PRIMARY KEY(id)
+	full_name VARCHAR(255) NOT NULL,
+	email VARCHAR(255) NOT NULL,
+	username VARCHAR(255) NOT NULL UNIQUE,
+	password VARCHAR(255) NOT NULL UNIQUE,
+	PRIMARY KEY(id)
 );
 
 CREATE TABLE routine(
 	id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(255),
 	workout_ids VARCHAR(255),
-    description VARCHAR(5000),
-    intensity SET('Low Intensity', 'Medium Intensity', 'High Intensity'),
-    image_content LONGBLOB,
-    user VARCHAR(255),
-    PRIMARY KEY(id)
+	description VARCHAR(5000),
+	intensity SET('Low Intensity', 'Medium Intensity', 'High Intensity'),
+	image_content LONGBLOB,
+	user VARCHAR(255),
+	PRIMARY KEY(id)
 );
 
 CREATE TABLE equipment(
 	id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255),
-    description VARCHAR(5000),
-    workout_type ENUM('Weight Training', 'Cardio') NOT NULL DEFAULT 'Weight Training',
-    image_content LONGBLOB,
-    user VARCHAR(255),
-    PRIMARY KEY(id),
-    CONSTRAINT AK_UnqueName UNIQUE(name)
+	name VARCHAR(255),
+	description VARCHAR(5000),
+	workout_type ENUM('Weight Training', 'Cardio') NOT NULL DEFAULT 'Weight Training',
+	image_content LONGBLOB,
+	user VARCHAR(255),
+	PRIMARY KEY(id),
+	CONSTRAINT AK_UnqueName UNIQUE(name)
 );
 
 CREATE TABLE muscle(
 	id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255),
-    description VARCHAR(5000),
-    muscle_group_id INT NOT NULL,
-    image_content LONGBLOB,
-    user VARCHAR(255),
-    PRIMARY KEY(id),
-    CONSTRAINT AK_UnqueName UNIQUE(name)
+	name VARCHAR(255),
+	description VARCHAR(5000),
+	muscle_group_id INT NOT NULL,
+	image_content LONGBLOB,
+	user VARCHAR(255),
+	PRIMARY KEY(id),
+	CONSTRAINT AK_UnqueName UNIQUE(name)
 );
 
 CREATE TABLE muscle_group(
 	id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255),
-    description VARCHAR(5000),
-    image_content LONGBLOB,
-    user VARCHAR(255),
-    PRIMARY KEY(id),
-    CONSTRAINT AK_UnqueName UNIQUE(name)
+	name VARCHAR(255),
+	description VARCHAR(5000),
+	image_content LONGBLOB,
+	user VARCHAR(255),
+	PRIMARY KEY(id),
+	CONSTRAINT AK_UnqueName UNIQUE(name)
 );
 
 
