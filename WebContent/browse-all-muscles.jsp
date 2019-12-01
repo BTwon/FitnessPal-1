@@ -84,7 +84,7 @@ if(session.getAttribute("username") != null){
   
 <%
 if(rs.next() == false){
-	out.println("<p> You do not have any muscles </p>");
+	out.println("<p> No muscles found in the database </p>");
 } else {
 
 	do{	

@@ -84,7 +84,7 @@ if(session.getAttribute("username") != null){
 <%
 
 if(rs.next() == false){
-	out.println("<p> You do not have any equipment </p>");
+	out.println("<p> No equipment found in the database </p>");
 } else {
 
 	do{	

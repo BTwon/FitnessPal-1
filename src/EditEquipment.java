@@ -32,6 +32,14 @@ public class EditEquipment extends HttpServlet {
 	    
 	    HttpSession session = request.getSession();
 	    String user = session.getAttribute("username").toString();
+	    
+	    if(name.isEmpty() || description.isEmpty() || workout_type.isEmpty()) {
+	    	out.println("<script type=\"text/javascript\">");
+	    	out.println("alert(\"Please enter all required fields\");");
+	    	out.println("location='edit-equipment.jsp?id="+id+"';");
+	    	out.println("</script>");
+	    	return;
+	    }
 
 	    if(user == null){
 	    	response.sendRedirect("login.jsp");

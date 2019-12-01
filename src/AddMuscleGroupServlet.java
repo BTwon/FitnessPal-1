@@ -28,11 +28,19 @@ public class AddMuscleGroupServlet extends HttpServlet {
 	    
 	    HttpSession session = request.getSession();
 	    String user = session.getAttribute("username").toString();
+	    
+	    if(name.isEmpty() || description.isEmpty() ) {
+	    	out.println("<script type=\"text/javascript\">");
+	    	out.println("alert(\"Please enter all required fields\");");
+	    	out.println("location='add-muscle-group.jsp';");
+	    	out.println("</script>");
+	    	return;
+	    }
 
 	    InputStream inputStream= null;
 	    
 	    Part filePart = request.getPart("image");
-        if (filePart != null) {
+        if (filePart.getSize() > 0) {
             // obtains input stream of the upload file
             inputStream = filePart.getInputStream();
         } else {

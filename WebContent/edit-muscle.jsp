@@ -93,7 +93,7 @@ if(session.getAttribute("username") != null){
           	<fieldset class="first_fieldset">
               	<legend>Edit Muscle Group</legend>
               	<label> Muscle Group Name: </label><br>
-              	<input type="text" name = "name" size="25" value = <%= rs.getString("name") %> ><br>
+              	<input type="text" name = "name" size="25" value = "<%= rs.getString("name") %>" ><br>
               	
               	<label> Description: </label>
   				<textarea name="description"><%= rs.getString("description") %></textarea><br> 

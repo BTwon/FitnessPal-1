@@ -31,18 +31,25 @@ public class EditWorkout extends HttpServlet {
 	    String [] muscles = request.getParameterValues("muscles");
 	    String instructions = request.getParameter("instructions");
 	    String video = request.getParameter("video");
+	    int id = Integer.parseInt(request.getParameter("id"));
 	    
 	    String equipment_str = "";
 	    String muscles_str = "";
 	    
-	    System.out.println(equipment);
+	    if(name.isEmpty() || skill_level.isEmpty() || type.isEmpty() || equipment == null || muscles == null || instructions.isEmpty() || video.isEmpty()) {
+	    	out.println("<script type=\"text/javascript\">");
+	    	out.println("alert(\"Please enter all required fields\");");
+	    	out.println("location='edit-workout.jsp?id="+id+"';");
+	    	out.println("</script>");
+	    	return;
+	    }
 	    
 	    if(equipment != null)
 	    	equipment_str = String.join(",", equipment);
 	    if(muscles != null)
 	    	muscles_str = String.join(",", muscles);
 
-	    int id = Integer.parseInt(request.getParameter("id"));
+	    
 	    
 	    HttpSession session = request.getSession();
 	    String user = session.getAttribute("username").toString();

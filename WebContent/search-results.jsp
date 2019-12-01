@@ -97,7 +97,11 @@ if(session.getAttribute("username") != null){
   
 <%
 
-while(rs.next()){	
+if(rs.next() == false){
+	out.println("<p> Nothing found... </p>");
+} else {
+
+	do{	
 	out.println("<div class=\"row\">  "  + 
 			 "       <div class=\"column2\">  "  + 
 			 "         <a href=\"workout-info.jsp?id=" + rs.getString("id") + "\">" +
@@ -128,6 +132,7 @@ while(rs.next()){
 			 "     </div>  "  + 
 			 "   <hr>  "  + 
 			 "    "  );
+	}while(rs.next());
 }
 %>
 </div>	

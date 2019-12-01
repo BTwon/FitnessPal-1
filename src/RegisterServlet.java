@@ -30,19 +30,53 @@ public class RegisterServlet extends HttpServlet {
 	    String password = request.getParameter("password");
 	    String confirm_password = request.getParameter("confirm-password");
 	    
-	    System.out.println("Password = " + password + " conf = " + confirm_password);
+	    if(full_name.isEmpty() || email.isEmpty() || username.isEmpty() || password.isEmpty() || confirm_password.isEmpty()) {
+	    	out.println("<script type=\"text/javascript\">");
+	    	out.println("alert(\"Please enter all required fields\");");
+	    	out.println("location='register.jsp';");
+	    	out.println("</script>");
+	    }
 	    
+	    String dbURL = "jdbc:mysql://localhost/MyFitnessPal?allowMultiQueries=true";
+	    
+	    String query = "SELECT * FROM user WHERE username = ? OR password = ? OR email = ?";
+		try {
+		    Connection connection = DriverManager.getConnection(dbURL, "root", "BACHlover1234");
+		    PreparedStatement pstmt = connection.prepareStatement( query );
+		    pstmt.setString(1, username);
+		    pstmt.setString(2, password);
+		    pstmt.setString(3, email);
+	
+		    ResultSet rs = pstmt.executeQuery( );
+		    
+		    if(rs.next()) {
+		    	alert("User already exists", "register.jsp", out);
+		    	connection.close();
+		    	return;
+		    }
+		    connection.close();
+	    
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+			alert("something went wrong", "login.jsp", out);
+			return;
+		}
+			    
+	    
+	    
+	    		    
 	    if(!password.equals(confirm_password)){
 	    	out.println("<script type=\"text/javascript\">");
 	    	out.println("alert(\"Please enter the same password for 'Confirm Password'\");");
-	    	out.println("location='register_page.html';");
+	    	out.println("location='register.jsp';");
 	    	out.println("</script>");
 	    	return;
 	    }
         	    
-	    String dbURL = "jdbc:mysql://localhost/MyFitnessPal?allowMultiQueries=true";
 	    
-	    String query = "INSERT INTO user(full_name, email, username, password) VALUES "
+	    
+	    query = "INSERT INTO user(full_name, email, username, password) VALUES "
 	    	+ "(?, ?, ?, ?)";
 	  try {
 	    Connection connection = DriverManager.getConnection(dbURL, "root", "BACHlover1234");
@@ -60,14 +94,14 @@ public class RegisterServlet extends HttpServlet {
 		  e.printStackTrace();
 		  out.println("<script type=\"text/javascript\">");
 		  out.println("alert('Please enter all required fields');");
-		  out.println("location='add-muscle.jsp';");
+		  out.println("location='register.jsp';");
 		  out.println("</script>");
 		  return;
 	  }
 	  catch(Exception e) {
 		  out.println("<script type=\"text/javascript\">");
 		  out.println("alert('Something went wrong...');");
-		  out.println("location='add-muscle.jsp';");
+		  out.println("location='register.jsp';");
 		  out.println("</script>");
 	  }
 	  
@@ -80,6 +114,13 @@ public class RegisterServlet extends HttpServlet {
 	  out.println("</script>");
 	  
 	  
+	}
+	
+	private void alert(String message, String location, PrintWriter out) {
+		out.println("<script type=\"text/javascript\">");
+		out.println("alert('" + message + "');");
+		out.println("location='" + location + "';");
+		out.println("</script>");
 	}
 	
 }

@@ -86,7 +86,7 @@ if(session.getAttribute("username") != null){
           <br>
           <br>
           <br>
-          <a href= "./CategoryWorkouts.jsp?category=chest">Click here to see Chest Workouts</a>
+          <a href= "./search-results.jsp?search_query=chest">Click here to see Chest Workouts</a>
               <br>
               <br>
               <br>
@@ -105,7 +105,7 @@ if(session.getAttribute("username") != null){
 	      <br>
 	      <br>
 	      <br>
-	      <a href= "./CategoryWorkouts.jsp?category=legs">Click here to see Leg Workouts</a>
+	      <a href= "./search-results.jsp?search_query=legs">Click here to see Leg Workouts</a>
 	      <br>
 	      <br>
 	      <br>
@@ -142,7 +142,7 @@ if(session.getAttribute("username") != null){
           <br>
           <br>
           <br>
-          <a href= "./CategoryWorkouts.jsp?category=back">Click here to see Back Workouts</a>
+          <a href= "./search-results.jsp?search_query=back">Click here to see Back Workouts</a>
           <br>
           <br>
           <br>
@@ -159,7 +159,7 @@ if(session.getAttribute("username") != null){
 	      <br>
 	      <br>
 	      <br>
-	      <a href= "./CategoryWorkouts.jsp?category=arms">Click here to see Arm Workouts</a>
+	      <a href= "./search-results.jsp?search_query=arms">Click here to see Arm Workouts</a>
 	      <br>
 	      <br>
 	      <br>
@@ -196,7 +196,7 @@ if(session.getAttribute("username") != null){
           <br>
           <br>
           <br>
-          <a href= "./CategoryWorkouts.jsp?category=shoulders">Click here to see Shoulder Workouts</a>
+          <a href= "./search-results.jsp?search_query=shoulders">Click here to see Shoulder Workouts</a>
           <br>
           <br>
           <br>
@@ -216,7 +216,7 @@ if(session.getAttribute("username") != null){
 	      <br>
 	      <br>
 	      <br>
-	      <a href= "./CategoryWorkouts.jsp?category=abs">Click here to see Ab Workouts</a>
+	      <a href= "./search-results.jsp?search_query=abs">Click here to see Ab Workouts</a>
 	      <br>
 	      <br>
 	      <br>
@@ -252,7 +252,7 @@ if(session.getAttribute("username") != null){
           <br>
           <br>
           <br>
-          <a href= "./CategoryWorkouts.jsp?category=buttocks">Click here to see Buttocks Workouts</a>
+          <a href= "./search-results.jsp?search_query=buttocks">Click here to see Buttocks Workouts</a>
           <br>
           <br>
           <br>
@@ -269,7 +269,7 @@ if(session.getAttribute("username") != null){
 	      <br>
 	      <br>
 	      <br>
-	      <a href= "./CategoryWorkouts.jsp?category=hips">Click here to see Hip Workouts</a>
+	      <a href= "./search-results.jsp?search_query=hips">Click here to see Hip Workouts</a>
 	      <br>
 	      <br>
 	      <br>

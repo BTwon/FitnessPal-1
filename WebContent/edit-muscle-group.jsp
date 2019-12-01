@@ -64,7 +64,7 @@ if(session.getAttribute("username") != null){
 
 <% 
 	int id = Integer.parseInt(request.getParameter("id"));
-	String dbURL = "jdbc:mysql://localhost/MyFitnessPal";
+	String dbURL = "jdbc:mysql://localhost/MyFitnessPal?useSSL=false";
     Connection connection = DriverManager.getConnection(dbURL, "root", "BACHlover1234");
     String query = "SELECT * FROM muscle_group WHERE id = ?";
     PreparedStatement pstmt = connection.prepareStatement(query);   
@@ -92,7 +92,7 @@ if(session.getAttribute("username") != null){
           	<fieldset class="first_fieldset">
               	<legend>Edit Muscle Group</legend>
               	<label> Name: </label><br>
-              	<input type="text" name = "name" size="25" value = <%= rs.getString("name") %> ><br>
+              	<input type="text" name = "name" size="25" value ="<%= rs.getString("name") %>" ><br>
               	
               	<label> Description: </label>
   				<textarea name="description"><%= rs.getString("description") %></textarea><br> 

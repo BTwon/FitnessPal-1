@@ -32,10 +32,18 @@ public class AddWorkoutServlet extends HttpServlet {
 	    String instructions = request.getParameter("instructions");
 	    String video = request.getParameter("video");
 	    
+	    if(name.isEmpty() || skill_level.isEmpty() || type.isEmpty() || equipment == null || muscles == null || instructions.isEmpty() || video.isEmpty()) {
+	    	out.println("<script type=\"text/javascript\">");
+	    	out.println("alert(\"Please enter all required fields\");");
+	    	out.println("location='add-workout.jsp';");
+	    	out.println("</script>");
+	    	return;
+	    }
+	    
 	    if (!video.matches("^(https?\\:\\/\\/)?(www\\.)?(youtube\\.com|youtu\\.?be)\\/.+$")) {
 	    	out.println("<script type=\"text/javascript\">");
-	    	out.println("alert('Please enter a youtube url');");
-	    	out.println("location='add-workout.html';");
+	    	out.println("alert('Please enter a proper youtube url');");
+	    	out.println("location='add-workout.jsp';");
 	    	out.println("</script>");
 	    	return;
 	    }
@@ -57,7 +65,7 @@ public class AddWorkoutServlet extends HttpServlet {
 	    InputStream inputStream= null;
 	    
 	    Part filePart = request.getPart("image");
-        if (filePart != null) {
+        if (filePart.getSize() > 0) {
             // obtains input stream of the upload file
             inputStream = filePart.getInputStream();
         } else {

@@ -29,17 +29,25 @@ public class AddMuscleServlet extends HttpServlet {
 	    
 	    HttpSession session = request.getSession();
 	    String user = session.getAttribute("username").toString();
+	    
+	    if(name.isEmpty() || description.isEmpty()) {
+	    	out.println("<script type=\"text/javascript\">");
+	    	out.println("alert(\"Please enter all required fields\");");
+	    	out.println("location='add-muscle.jsp';");
+	    	out.println("</script>");
+	    	return;
+	    }
 
 	    InputStream inputStream= null;
 	    
 	    Part filePart = request.getPart("image");
-        if (filePart != null) {
+        if (filePart.getSize() > 0) {
             // obtains input stream of the upload file
             inputStream = filePart.getInputStream();
         } else {
 	    	out.println("<script type=\"text/javascript\">");
 	    	out.println("alert('Please upload an image');");
-	    	out.println("location='add-muscle.html';");
+	    	out.println("location='add-muscle.jsp';");
 	    	out.println("</script>");
 	    	return;
         }
